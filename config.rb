@@ -40,19 +40,26 @@ page '/*.txt', layout: false
 # Build-specific configuration
 # https://middlemanapp.com/advanced/configuration/#environment-specific-settings
 
- configure :build do
-#   activate :minify_css
-#   activate :minify_javascript
+configure :build do
+  # activate :minify_css
+  # activate :minify_javascript
   activate :asset_hash
   activate :asset_host, :host => 'https://xuejoule.github.io/tanaka_blog'
- end
+end
+
 activate :blog do |blog|
-    blog.default_extension = ".md"
+#  blog.prefix = "blog"
+# blog.permalink = "blog/{year}/{title}.html"
+# blog.permalink = "blog/{category}/{title}.html"
+  blog.sources = "{year}-{month}-{day}-{title}.html"
+  blog.permalink = "{year}/{month}/{day}/{title}.html"
+  blog.default_extension = ".md"
 end
 
 helpers do
-  def hostUrl link
-    'https://xuejoule.github.io/tanaka_blog' + link
+  def host_url(link)
+    'https://xuejoule.github.io' + link
+    'http://localhost:4567' + link
   end
 end
 
