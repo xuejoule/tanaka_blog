@@ -13,19 +13,22 @@
   <body>
     <h1>middlemanとgithubの連携</h1>
 
-<p>github
-<a href="https://github.com/xuejoule/tanaka_blog.git">https://github.com/xuejoule/tanaka_blog.git</a></p>
+<h1>github</h1>
+
+<h1><a href="https://github.com/xuejoule/tanaka_blog.git">https://github.com/xuejoule/tanaka_blog.git</a></h1>
 
 <p>参考url
 <a href="https://zacky1972.github.io/tech/2017/11/04/middleman.html">https://zacky1972.github.io/tech/2017/11/04/middleman.html</a></p>
 
-<p>middlemanのインストール
-manabu@jacquard|2020-07-20|22:46:27|/home/manabu/Desktop/development|
+<h1>middlemanのインストール</h1>
+
+<pre><code>manabu@jacquard|2020-07-20|22:46:27|/home/manabu/Desktop/development|
 % gem install middleman
 Successfully installed middleman-4.3.7
 Parsing documentation for middleman-4.3.7
 Done installing documentation for middleman after 0 seconds
-1 gem installed</p>
+1 gem installed
+</code></pre>
 
 <p>% middleman version
 Middleman 5.0.0.rc.1</p>
@@ -41,13 +44,15 @@ Initialized empty Git repository in /home/manabu/Desktop/development/tanaka</em>
 <p>% git remote add origin (リモート先)
 =&gt;% git remote add origin <a href="https://github.com/xuejoule/tanaka_blog.git">https://github.com/xuejoule/tanaka_blog.git</a></p>
 
-<p>ディレクトリの内容を add/commit/push する
-$ git add -A
+<h1>ディレクトリの内容を add/commit/push する</h1>
+
+<p>$ git add -A
 $ git commit -m &quot;initial commit&quot;
 $ git push -f origin master</p>
 
-<p>サーバ起動
-% bundle exec middleman server
+<h1>サーバ起動</h1>
+
+<p>% bundle exec middleman server
 ブラウザlocalhost:4567</p>
 
 <p>manabu@jacquard|2020-07-20|22:53:59|/home/manabu/Desktop/development/tanaka<em>blog|
@@ -58,13 +63,11 @@ gem &#39;middleman-blog&#39;, &#39;~&gt; 4.0&#39;
 manabu@jacquard|2020-07-20|22:54:15|/home/manabu/Desktop/development/tanaka_blog|
 % bundle install</p>
 
-<p>config.rb に次のような記述をする</p>
+<h1>config.rb に次のような記述をする</h1>
 
-<p>activate :blog do |blog|</p>
-
-<h1>ブログ機能のオプションを設定</h1>
-
-<p>blog.sources = &quot;{year}-{month}-{day}-{title}.html&quot;
+<p>activate :blog do |blog|
+  ブログ機能のオプションを設定
+  blog.sources = &quot;{year}-{month}-{day}-{title}.html&quot;
   blog.permalink = &quot;{year}/{month}/{day}/{title}.html&quot;
   blog.default_extension = &quot;.md&quot;
 end</p>
@@ -78,8 +81,9 @@ end
 
 <p>source/index.html.erb に記述します。</p>
 
-<p>GitHub Flavored Markdown の導入
-Gemfile に下記を追加</p>
+<h1>GitHub Flavored Markdown の導入</h1>
+
+<p>Gemfile に下記を追加</p>
 
 <p>gem &#39;redcarpet&#39;
 gem &#39;nokogiri&#39;
@@ -89,7 +93,7 @@ gem &#39;nokogiri&#39;
 
 <p>config.rb に下記を追加</p>
 
-<h2>GitHub Flavored Markdown</h2>
+<h1>GitHub Flavored Markdown</h1>
 
 <p>set :markdown, :tables =&gt; true, :autolink =&gt; true, :gh<em>blockcode =&gt; true, :fenced</em>code<em>blocks =&gt; true
 set :markdown</em>engine, :redcarpet</p>
@@ -107,7 +111,8 @@ helpers do
   end
 end</p>
 
-<p>config.rb に下記の記述を追加</p>
+<p>config.rb に下記の記述を追加
+```</p>
 
 <h1>Build-specific configuration</h1>
 
@@ -124,7 +129,7 @@ end</p>
   activate :asset</em>hash
   activate :asset_host, :host =&gt; &#39;https://(ユーザー名).github.io&#39;=&gt;&#39;<a href="https://xuejoule.github.io">https://xuejoule.github.io</a>&#39;
 end
-= ここ変更点</p>
+```</p>
 
 <h1>デプロイの設定</h1>
 
