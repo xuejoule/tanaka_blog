@@ -1,3 +1,10 @@
+---
+title: middlemanとgithubの連携
+---
+
+# middlemanとgithubの連携
+
+
 github
 https://github.com/xuejoule/tanaka_blog.git
 
