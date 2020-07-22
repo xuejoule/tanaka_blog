@@ -5,19 +5,21 @@ title: middlemanとgithubの連携
 # middlemanとgithubの連携
 
 
-github
-https://github.com/xuejoule/tanaka_blog.git
+# github
+# https://github.com/xuejoule/tanaka_blog.git
 
 参考url
 https://zacky1972.github.io/tech/2017/11/04/middleman.html
 
-middlemanのインストール
+# middlemanのインストール
+```
 manabu@jacquard|2020-07-20|22:46:27|/home/manabu/Desktop/development|
 % gem install middleman
 Successfully installed middleman-4.3.7
 Parsing documentation for middleman-4.3.7
 Done installing documentation for middleman after 0 seconds
 1 gem installed
+```
 
 % middleman version
 Middleman 5.0.0.rc.1
@@ -34,12 +36,12 @@ Initialized empty Git repository in /home/manabu/Desktop/development/tanaka_blog
 =>% git remote add origin https://github.com/xuejoule/tanaka_blog.git
 
 
-ディレクトリの内容を add/commit/push する
+# ディレクトリの内容を add/commit/push する
 $ git add -A
 $ git commit -m "initial commit"
 $ git push -f origin master
 
-サーバ起動
+# サーバ起動
 % bundle exec middleman server
 ブラウザlocalhost:4567
 
@@ -52,10 +54,10 @@ manabu@jacquard|2020-07-20|22:54:15|/home/manabu/Desktop/development/tanaka_blog
 % bundle install
 
 
-config.rb に次のような記述をする
+# config.rb に次のような記述をする
 
 activate :blog do |blog|
-# ブログ機能のオプションを設定
+  ブログ機能のオプションを設定
   blog.sources = "{year}-{month}-{day}-{title}.html"
   blog.permalink = "{year}/{month}/{day}/{title}.html"
   blog.default_extension = ".md"
@@ -71,7 +73,7 @@ end
 source/index.html.erb に記述します。
 
 
-GitHub Flavored Markdown の導入
+# GitHub Flavored Markdown の導入
 Gemfile に下記を追加
 
 gem 'redcarpet'
@@ -82,7 +84,7 @@ gem 'nokogiri'
 
 config.rb に下記を追加
 
-## GitHub Flavored Markdown
+# GitHub Flavored Markdown
 set :markdown, :tables => true, :autolink => true, :gh_blockcode => true, :fenced_code_blocks => true
 set :markdown_engine, :redcarpet
 
@@ -102,6 +104,7 @@ end
 
 
 config.rb に下記の記述を追加
+```
 # Build-specific configuration
 configure :build do
   # Minify CSS on build
@@ -116,7 +119,7 @@ configure :build do
   activate :asset_hash
   activate :asset_host, :host => 'https://(ユーザー名).github.io'=>'https://xuejoule.github.io'
 end
-= ここ変更点
+```
 
 # デプロイの設定
 # 今回は gh-pages を使用するので branch に 'gh-pages' を設定する
