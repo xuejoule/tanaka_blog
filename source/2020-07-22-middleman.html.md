@@ -20,13 +20,16 @@ Parsing documentation for middleman-4.3.7
 Done installing documentation for middleman after 0 seconds
 1 gem installed
 ```
-
+```
 % middleman version
 Middleman 5.0.0.rc.1
-
+```
+```
 % middleman init tanaka_blog
-
+```
+```
 % cd tanaka_blog
+```
 
 manabu@jacquard|2020-07-20|22:49:02|/home/manabu/Desktop/development/tanaka_blog|
 % git init
