@@ -7,188 +7,209 @@
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>middlemanとgithubの連携</title>
-    <link href="https://xuejoule.github.io/tanaka_blog/stylesheets/site-a77c873c.css" rel="stylesheet" />
+    <link href="https://xuejoule.github.io/tanaka_blog/stylesheets/site-3beba0c0.css" rel="stylesheet" />
     <script src="https://xuejoule.github.io/tanaka_blog/javascripts/site-954757c2.js"></script>
   </head>
   <body>
     <h1>middlemanとgithubの連携</h1>
 
-<h1>github</h1>
+<h2>連携参考URL</h2>
 
-<h1><a href="https://github.com/xuejoule/tanaka_blog.git">https://github.com/xuejoule/tanaka_blog.git</a></h1>
+<p><a href="https://zacky1972.github.io/tech/2017/11/04/middleman.html">https://zacky1972.github.io/tech/2017/11/04/middleman.html</a></p>
 
-<p>参考url
-<a href="https://zacky1972.github.io/tech/2017/11/04/middleman.html">https://zacky1972.github.io/tech/2017/11/04/middleman.html</a></p>
+<h2>middlemanのインストール</h2>
 
-<h1>middlemanのインストール</h1>
+<p>manabu@jacquard|2020-07-20|22:46:27|/home/manabu/Desktop/development|</p>
 
-<pre><code>manabu@jacquard|2020-07-20|22:46:27|/home/manabu/Desktop/development|
-% gem install middleman
-Successfully installed middleman-4.3.7
+<p>% gem install middleman</p>
+
+<p>Successfully installed middleman-4.3.7
 Parsing documentation for middleman-4.3.7
 Done installing documentation for middleman after 0 seconds
-1 gem installed
-</code></pre>
+1 gem installed</p>
 
-<p>% middleman version
-Middleman 5.0.0.rc.1</p>
+<p>% bundle exec middleman version</p>
+
+<pre><code>Deprecation warning: Expected string default value for &#39;--instrument&#39;; got false (boolean).
+This will be rejected in the future unless you explicitly pass the options `check_default_type: false` or call `allow_incompatible_default_type!` in your code
+You can silence deprecations warning by setting the environment variable THOR_SILENCE_DEPRECATION.
+Middleman 4.3.7
+</code></pre>
 
 <p>% middleman init tanaka_blog</p>
 
 <p>% cd tanaka_blog</p>
 
-<p>manabu@jacquard|2020-07-20|22:49:02|/home/manabu/Desktop/development/tanaka<em>blog|
-% git init
-Initialized empty Git repository in /home/manabu/Desktop/development/tanaka</em>blog/.git/</p>
+<p>manabu@jacquard|2020-07-20|22:49:02|/home/manabu/Desktop/development/tanaka_blog|</p>
 
-<p>% git remote add origin (リモート先)
-=&gt;% git remote add origin <a href="https://github.com/xuejoule/tanaka_blog.git">https://github.com/xuejoule/tanaka_blog.git</a></p>
+<p>% git init</p>
 
-<h1>ディレクトリの内容を add/commit/push する</h1>
+<p>Initialized empty Git repository in /home/manabu/Desktop/development/tanaka_blog/.git/</p>
 
-<p>$ git add -A
-$ git commit -m &quot;initial commit&quot;
-$ git push -f origin master</p>
+<p>% git remote add origin リモート先
+% git remote add origin <a href="https://github.com/xuejoule/tanaka_blog.git">https://github.com/xuejoule/tanaka_blog.git</a></p>
 
-<h1>サーバ起動</h1>
+<h2>ディレクトリの内容を add/commit/push する</h2>
 
-<p>% bundle exec middleman server
-ブラウザlocalhost:4567</p>
+<p>$ git add -A</p>
 
-<p>manabu@jacquard|2020-07-20|22:53:59|/home/manabu/Desktop/development/tanaka<em>blog|
-% vi Gemfile
-manabu@jacquard|2020-07-20|22:53:59|/home/manabu/Desktop/development/tanaka</em>blog|
-% cat Gemfile
-gem &#39;middleman-blog&#39;, &#39;~&gt; 4.0&#39;
-manabu@jacquard|2020-07-20|22:54:15|/home/manabu/Desktop/development/tanaka_blog|
-% bundle install</p>
+<p>$ git commit -m &quot;initial commit&quot;</p>
 
-<h1>config.rb に次のような記述をする</h1>
+<p>$ git push -f origin master</p>
 
-<p>activate :blog do |blog|
+<h2>サーバ起動</h2>
+
+<p>% bundle exec middleman server</p>
+
+<p>ブラウザlocalhost:4567</p>
+
+<p>manabu@jacquard|2020-07-20|22:53:59|/home/manabu/Desktop/development/tanaka_blog|</p>
+
+<p>% vi Gemfile</p>
+
+<p>manabu@jacquard|2020-07-20|22:53:59|/home/manabu/Desktop/development/tanaka_blog|</p>
+
+<p>% cat Gemfile</p>
+
+<p>gem &#39;middleman-blog&#39;, &#39;~&gt; 4.0&#39;</p>
+
+<p>manabu@jacquard|2020-07-20|22:54:15|/home/manabu/Desktop/development/tanaka_blog|</p>
+
+<p>% bundle install</p>
+
+<h2>config.rb に次のような記述をする</h2>
+
+<pre><code>activate :blog do |blog|
   ブログ機能のオプションを設定
   blog.sources = &quot;{year}-{month}-{day}-{title}.html&quot;
   blog.permalink = &quot;{year}/{month}/{day}/{title}.html&quot;
   blog.default_extension = &quot;.md&quot;
-end</p>
+end
+</code></pre>
 
-<p>helpers do
+<pre><code>helpers do
   def hostUrl link
     link
   end
 end
-※ hostUrl ヘルパーは後で使うフックとして用意しておきます。</p>
+※ hostUrl ヘルパーは後で使うフックとして用意しておきます。
+</code></pre>
 
 <p>source/index.html.erb に記述します。</p>
 
-<h1>GitHub Flavored Markdown の導入</h1>
+<h2>GitHub Flavored Markdown の導入</h2>
 
 <p>Gemfile に下記を追加</p>
 
-<p>gem &#39;redcarpet&#39;
-gem &#39;nokogiri&#39;
-下記のコマンドを実行します。</p>
+<p>gem &#39;redcarpet&#39;</p>
+
+<p>gem &#39;nokogiri&#39;</p>
+
+<p>下記のコマンドを実行します。</p>
 
 <p>% bundle install</p>
 
-<p>config.rb に下記を追加</p>
+<h2>config.rb に下記を追加</h2>
 
-<h1>GitHub Flavored Markdown</h1>
+<pre><code> # GitHub Flavored Markdown
+set :markdown, :tables =&gt; true, :autolink =&gt; true, :gh_blockcode =&gt; true, :fenced_code_blocks =&gt; true
+set :markdown_engine, :redcarpet
+</code></pre>
 
-<p>set :markdown, :tables =&gt; true, :autolink =&gt; true, :gh<em>blockcode =&gt; true, :fenced</em>code<em>blocks =&gt; true
-set :markdown</em>engine, :redcarpet</p>
+<h2>GitHub Pages にデプロイ</h2>
 
-<p>GitHub Pages にデプロイ
-gem &#39;middleman-deploy&#39;, &#39;~&gt; 2.0.0.pre.alpha&#39;
-その後，次のコマンドを実行します。
-% bundle install</p>
+<p>gem &#39;middleman-deploy&#39;, &#39;~&gt; 2.0.0.pre.alpha&#39;</p>
 
-<p>config.rb に書いた hostUrl を次のように変更します。
-helpers do
+<p>その後，次のコマンドを実行します。</p>
+
+<p>% bundle install</p>
+
+<h2>config.rb に書いた hostUrl を次のように変更します。</h2>
+
+<pre><code>helpers do
   def host_url(link)
-    &#39;https://(ユーザー名).github.io&#39; + link =&gt; &#39;<a href="https://xuejoule.github.io">https://xuejoule.github.io</a>&#39; + link
-    &#39;<a href="http://localhost:4567">http://localhost:4567</a>&#39; + link
+    &#39;https://(ユーザー名).github.io&#39; + link =&gt; &#39;https://xuejoule.github.io&#39; + link
+    &#39;http://localhost:4567&#39; + link
   end
-end</p>
-
-<p>config.rb に下記の記述を追加
-```</p>
-
-<h1>Build-specific configuration</h1>
-
-<p>configure :build do
-  # Minify CSS on build
-  # activate :minify_css</p>
-
-<p># Minify Javascript on build
-  # activate :minify<em>javascript
-  # リポジトリ名を host に設定しておく
-  # こうすることで stylesheet</em>link<em>tag などで展開されるパスが
-  # https://(ユーザー名).github.io/(リポジトリ名)/stylesheets/*.css
-  # のようになる
-  activate :asset</em>hash
-  activate :asset_host, :host =&gt; &#39;https://(ユーザー名).github.io&#39;=&gt;&#39;<a href="https://xuejoule.github.io">https://xuejoule.github.io</a>&#39;
 end
-```</p>
+</code></pre>
 
-<h1>デプロイの設定</h1>
+<h2>config.rb に下記の記述を追加</h2>
 
-<h1>今回は gh-pages を使用するので branch に &#39;gh-pages&#39; を設定する</h1>
+<pre><code> Build-specific configuration
+configure :build do
+   Minify CSS on build
+   activate :minify_css
 
-<p>activate :deploy do |deploy|
-  deploy.build<em>before = true
-  deploy.deploy</em>method = :git
+   Minify Javascript on build
+   activate :minify_javascript
+   リポジトリ名を host に設定しておく
+   こうすることで stylesheet_link_tag などで展開されるパスが
+   https://(ユーザー名).github.io/(リポジトリ名)/stylesheets/*.css
+   のようになる
+  activate :asset_hash
+  activate :asset_host, :host =&gt; &#39;https://(ユーザー名).github.io&#39;=&gt;&#39;https://xuejoule.github.io&#39;
+end
+</code></pre>
+
+<h2>デプロイの設定</h2>
+
+<p>今回は gh-pages を使用するので branch に &#39;gh-pages&#39; を設定する</p>
+
+<pre><code>activate :deploy do |deploy|
+  deploy.build_before = true
+  deploy.deploy_method = :git
   deploy.branch = &#39;gh-pages&#39;
-end</p>
+end
+</code></pre>
 
-<p>以上の準備が終わったところで，次のコマンドを実行すると，GitHub Pages にデプロイされます。
-manabu@jacquard|2020-07-20|23:34:00|/home/manabu/Desktop/development/tanaka<em>blog|
-% bundle exec middleman deploy
-Deprecation warning: Expected string default value for &#39;--instrument&#39;; got false (boolean).
-This will be rejected in the future unless you explicitly pass the options `check</em>default<em>type: false<code>or call</code>allow</em>incompatible<em>default</em>type!<code>in your code
+<h2>以上の準備が終わったところで，次のコマンドを実行すると，GitHub Pages にデプロイされます。</h2>
+
+<p>manabu@jacquard|2020-07-20|23:34:00|/home/manabu/Desktop/development/tanaka_blog|</p>
+
+<p>% bundle exec middleman deploy</p>
+
+<pre><code>Deprecation warning: Expected string default value for &#39;--instrument&#39;; got false (boolean).
+This will be rejected in the future unless you explicitly pass the options `check_default_type: false` or call `allow_incompatible_default_type!` in your code
 You can silence deprecations warning by setting the environment variable THOR_SILENCE_DEPRECATION.
 == Blog Sources: {year}-{month}-{day}-{title}.html (:prefix + :sources)
          run  middleman build -e production from &quot;.&quot;
 Deprecation warning: Expected string default value for &#39;--instrument&#39;; got false (boolean).
-This will be rejected in the future unless you explicitly pass the options</code>check<em>default</em>type: false<code>or call</code>allow<em>incompatible</em>default<em>type!` in your code
-You can silence deprecations warning by setting the environment variable THOR</em>SILENCE_DEPRECATION.
-== Blog Sources: {year}-{month}-{day}-{title}.html (:prefix + :sources)
+This will be rejected in the future unless you explicitly pass the options `check_default_type: false` or call `allow_incompatible_default_type!` in your code
+You can silence deprecations warning by setting the environment variable THOR_SILENCE_DEPRECATION.
+ Blog Sources: {year}-{month}-{day}-{title}.html (:prefix + :sources)
       create  build/stylesheets/site-a77c873c.css
       create  build/images/.keep
       create  build/javascripts/site-954757c2.js
       create  build/index.html
-Project built successfully.</p>
-
-<h2>Deploying via git to remote=&quot;origin&quot; and branch=&quot;gh-pages&quot;</h2>
-
-<p>Can&#39;t deploy! Please add a remote with the name &#39;origin&#39; to your repo.</p>
+Project built successfully.
+Deploying via git to remote=&quot;origin&quot; and branch=&quot;gh-pages&quot;
+Cant deploy! Please add a remote with the name &#39;origin&#39; to your repo.
+</code></pre>
 
 <p>デプロイ失敗</p>
 
-<p>===</p>
+<p>% bundle exec middleman deploy</p>
 
-<p>% bundle exec middleman deploy
-Deprecation warning: Expected string default value for &#39;--instrument&#39;; got false (boolean).
-This will be rejected in the future unless you explicitly pass the options <code>check_default_type: false</code> or call <code>allow_incompatible_default_type!</code> in your code
-You can silence deprecations warning by setting the environment variable THOR<em>SILENCE</em>DEPRECATION.
+<pre><code>Deprecation warning: Expected string default value for &#39;--instrument&#39;; got false (boolean).
+This will be rejected in the future unless you explicitly pass the options `check_default_type: false` or call `allow_incompatible_default_type!` in your code
+You can silence deprecations warning by setting the environment variable THOR_SILENCE_DEPRECATION.
 == Blog Sources: {year}-{month}-{day}-{title}.html (:prefix + :sources)
          run  middleman build -e production from &quot;.&quot;
 Deprecation warning: Expected string default value for &#39;--instrument&#39;; got false (boolean).
-This will be rejected in the future unless you explicitly pass the options <code>check_default_type: false</code> or call <code>allow_incompatible_default_type!</code> in your code
-You can silence deprecations warning by setting the environment variable THOR<em>SILENCE</em>DEPRECATION.
+This will be rejected in the future unless you explicitly pass the options `check_default_type: false` or call `allow_incompatible_default_type!` in your code
+You can silence deprecations warning by setting the environment variable THOR_SILENCE_DEPRECATION.
 == Blog Sources: {year}-{month}-{day}-{title}.html (:prefix + :sources)
    identical  build/stylesheets/site-a77c873c.css
    identical  build/images/.keep
    identical  build/javascripts/site-954757c2.js
    identical  build/index.html
-Project built successfully.</p>
-
-<h2>Deploying via git to remote=&quot;origin&quot; and branch=&quot;gh-pages&quot;</h2>
-
-<p>Already on &#39;gh-pages&#39;
+pProject built successfully.
+ Deploying via git to remote=&quot;origin&quot; and branch=&quot;gh-pages&quot;
+Already on &#39;gh-pages&#39;
 [gh-pages fb16df1] Automated commit at 2020-07-21 01:06:00 UTC by middleman-deploy 2.0.0-alpha
-Username for &#39;<a href="https://github.com&#x27;:">https://github.com&#39;:</a> xuejoule
-Password for &#39;<a href="https://xuejoule@github.com&#x27;:">https://xuejoule@github.com&#39;:</a> 
+Username for &#39;https://github.com&#39;: xuejoule
+Password for &#39;https://xuejoule@github.com&#39;: 
 Enumerating objects: 10, done.
 Counting objects: 100% (10/10), done.
 Delta compression using up to 8 threads
@@ -198,24 +219,17 @@ Total 10 (delta 1), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (1/1), done.
 remote: 
 remote: Create a pull request for &#39;gh-pages&#39; on GitHub by visiting:
-remote:      <a href="https://github.com/xuejoule/tanaka_blog/pull/new/gh-pages">https://github.com/xuejoule/tanaka_blog/pull/new/gh-pages</a>
+remote:      https://github.com/xuejoule/tanaka_blog/pull/new/gh-pages
 remote: 
-To <a href="https://github.com/xuejoule/tanaka_blog.git">https://github.com/xuejoule/tanaka_blog.git</a>
- * [new branch]      gh-pages -&gt; gh-pages</p>
+To https://github.com/xuejoule/tanaka_blog.git
+ * [new branch]      gh-pages -&gt; gh-pages
+</code></pre>
 
-<p>githab pages
-<a href="https://github.com/xuejoule/tanaka_blog.git">https://github.com/xuejoule/tanaka_blog.git</a></p>
+<h2>githab pages</h2>
 
 <p>デプロイしてから10分程度待った後に， https://(ユーザー名).github.io/(リポジトリ名) にアクセスするとサイトができています。</p>
 
-<p>= 完了</p>
-
-<p>= 補足
-% bundle exec middleman version
-Deprecation warning: Expected string default value for &#39;--instrument&#39;; got false (boolean).
-This will be rejected in the future unless you explicitly pass the options <code>check_default_type: false</code> or call <code>allow_incompatible_default_type!</code> in your code
-You can silence deprecations warning by setting the environment variable THOR<em>SILENCE</em>DEPRECATION.
-Middleman 4.3.7</p>
+<p><a href="https://github.com/xuejoule/tanaka_blog.git">https://github.com/xuejoule/tanaka_blog.git</a></p>
 
   </body>
 </html>
