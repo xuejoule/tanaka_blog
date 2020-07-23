@@ -1,6 +1,5 @@
 ---
 title: middlemanとgithubの連携
-date:
 ---
 
 # middlemanとgithubの連携
@@ -11,13 +10,15 @@ https://zacky1972.github.io/tech/2017/11/04/middleman.html
 ## middlemanのインストール
 
 manabu@jacquard|2020-07-20|22:46:27|/home/manabu/Desktop/development|
-  
+
   % gem install middleman
 
+```
 Successfully installed middleman-4.3.7
 Parsing documentation for middleman-4.3.7
 Done installing documentation for middleman after 0 seconds
 1 gem installed
+```
 
 % bundle exec middleman version
 
@@ -35,16 +36,20 @@ Middleman 4.3.7
 
 
 manabu@jacquard|2020-07-20|22:49:02|/home/manabu/Desktop/development/tanaka_blog|
-  
+
   % git init
 
+```
 Initialized empty Git repository in /home/manabu/Desktop/development/tanaka_blog/.git/
+```
 
 % git remote add origin リモート先
+
 % git remote add origin https://github.com/xuejoule/tanaka_blog.git
 
 
 ## ディレクトリの内容を add/commit/push する
+
 $ git add -A
 
 $ git commit -m "initial commit"
@@ -52,6 +57,7 @@ $ git commit -m "initial commit"
 $ git push -f origin master
 
 ## サーバ起動
+
 % bundle exec middleman server
 
 ブラウザlocalhost:4567
@@ -61,17 +67,17 @@ manabu@jacquard|2020-07-20|22:53:59|/home/manabu/Desktop/development/tanaka_blog
   % vi Gemfile
 
 manabu@jacquard|2020-07-20|22:53:59|/home/manabu/Desktop/development/tanaka_blog|
-  
+
   % cat Gemfile
 
 gem 'middleman-blog', '~> 4.0'
 
 manabu@jacquard|2020-07-20|22:54:15|/home/manabu/Desktop/development/tanaka_blog|
-  
-% bundle install
+
+  % bundle install
 
 
-## config.rb に次のような記述をする
+## config.rb に記述
 
 ```
 activate :blog do |blog|
@@ -90,10 +96,11 @@ helpers do
 end
 ※ hostUrl ヘルパーは後で使うフックとして用意しておきます。
 ```
-source/index.html.erb に記述します。
+source/index.html.erb に記述
 
 
 ## GitHub Flavored Markdown の導入
+
 Gemfile に下記を追加
 
 gem 'redcarpet'
@@ -113,14 +120,14 @@ set :markdown_engine, :redcarpet
 ```
 
 ## GitHub Pages にデプロイ
-gem 'middleman-deploy', '~> 2.0.0.pre.alpha'
 
-その後，次のコマンドを実行します。
+gem 'middleman-deploy', '~> 2.0.0.pre.alpha'
 
 % bundle install
 
 
-## config.rb に書いた hostUrl を次のように変更します。
+## config.rb に書いた hosturl を次のように変更
+
 ```
 helpers do
   def host_url(link)
@@ -131,6 +138,7 @@ end
 ```
 
 ## config.rb に下記の記述を追加
+
 ```
  Build-specific configuration
 configure :build do
@@ -148,9 +156,8 @@ configure :build do
 end
 ```
 
-
 ## デプロイの設定
-今回は gh-pages を使用するので branch に 'gh-pages' を設定する
+今回は gh-pages を使用するので branch に 'gh-pages' を設定
 
 ```
 activate :deploy do |deploy|
@@ -160,9 +167,9 @@ activate :deploy do |deploy|
 end
 ```
 
-## 以上の準備が終わったところで，次のコマンドを実行すると，GitHub Pages にデプロイされます。
+## 以上の準備が終わったところで，次のコマンドを実行すると，GitHub Pages にデプロイされる
 manabu@jacquard|2020-07-20|23:34:00|/home/manabu/Desktop/development/tanaka_blog|
-  
+
   % bundle exec middleman deploy
 
 ```
@@ -229,7 +236,7 @@ To https://github.com/xuejoule/tanaka_blog.git
 
 ## githab pages
 
-デプロイしてから10分程度待った後に， https://(ユーザー名).github.io/(リポジトリ名) にアクセスするとサイトができています。
+デプロイしてから10分程度待った後に， https://(ユーザー名).github.io/(リポジトリ名) にアクセスするとサイトが起動
 
 https://github.com/xuejoule/tanaka_blog.git
 
