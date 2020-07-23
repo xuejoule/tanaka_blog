@@ -23,10 +23,11 @@
 
 <p>% gem install middleman</p>
 
-<p>Successfully installed middleman-4.3.7
+<pre><code>Successfully installed middleman-4.3.7
 Parsing documentation for middleman-4.3.7
 Done installing documentation for middleman after 0 seconds
-1 gem installed</p>
+1 gem installed
+</code></pre>
 
 <p>% bundle exec middleman version</p>
 
@@ -44,10 +45,12 @@ Middleman 4.3.7
 
 <p>% git init</p>
 
-<p>Initialized empty Git repository in /home/manabu/Desktop/development/tanaka_blog/.git/</p>
+<pre><code>Initialized empty Git repository in /home/manabu/Desktop/development/tanaka_blog/.git/
+</code></pre>
 
-<p>% git remote add origin リモート先
-% git remote add origin <a href="https://github.com/xuejoule/tanaka_blog.git">https://github.com/xuejoule/tanaka_blog.git</a></p>
+<p>% git remote add origin リモート先</p>
+
+<p>% git remote add origin <a href="https://github.com/xuejoule/tanaka_blog.git">https://github.com/xuejoule/tanaka_blog.git</a></p>
 
 <h2>ディレクトリの内容を add/commit/push する</h2>
 
@@ -77,7 +80,7 @@ Middleman 4.3.7
 
 <p>% bundle install</p>
 
-<h2>config.rb に次のような記述をする</h2>
+<h2>config.rb に記述</h2>
 
 <pre><code>activate :blog do |blog|
   ブログ機能のオプションを設定
@@ -95,7 +98,7 @@ end
 ※ hostUrl ヘルパーは後で使うフックとして用意しておきます。
 </code></pre>
 
-<p>source/index.html.erb に記述します。</p>
+<p>source/index.html.erb に記述</p>
 
 <h2>GitHub Flavored Markdown の導入</h2>
 
@@ -120,11 +123,9 @@ set :markdown_engine, :redcarpet
 
 <p>gem &#39;middleman-deploy&#39;, &#39;~&gt; 2.0.0.pre.alpha&#39;</p>
 
-<p>その後，次のコマンドを実行します。</p>
-
 <p>% bundle install</p>
 
-<h2>config.rb に書いた hostUrl を次のように変更します。</h2>
+<h2>config.rb に書いた hosturl を次のように変更</h2>
 
 <pre><code>helpers do
   def host_url(link)
@@ -154,7 +155,7 @@ end
 
 <h2>デプロイの設定</h2>
 
-<p>今回は gh-pages を使用するので branch に &#39;gh-pages&#39; を設定する</p>
+<p>今回は gh-pages を使用するので branch に &#39;gh-pages&#39; を設定</p>
 
 <pre><code>activate :deploy do |deploy|
   deploy.build_before = true
@@ -163,7 +164,7 @@ end
 end
 </code></pre>
 
-<h2>以上の準備が終わったところで，次のコマンドを実行すると，GitHub Pages にデプロイされます。</h2>
+<h2>以上の準備が終わったところで，次のコマンドを実行すると，GitHub Pages にデプロイされる</h2>
 
 <p>manabu@jacquard|2020-07-20|23:34:00|/home/manabu/Desktop/development/tanaka_blog|</p>
 
@@ -227,7 +228,7 @@ To https://github.com/xuejoule/tanaka_blog.git
 
 <h2>githab pages</h2>
 
-<p>デプロイしてから10分程度待った後に， https://(ユーザー名).github.io/(リポジトリ名) にアクセスするとサイトができています。</p>
+<p>デプロイしてから10分程度待った後に， https://(ユーザー名).github.io/(リポジトリ名) にアクセスするとサイトが起動</p>
 
 <p><a href="https://github.com/xuejoule/tanaka_blog.git">https://github.com/xuejoule/tanaka_blog.git</a></p>
 
