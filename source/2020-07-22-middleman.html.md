@@ -238,6 +238,4 @@ To https://github.com/xuejoule/tanaka_blog.git
 
 デプロイしてから10分程度待った後に， https://(ユーザー名).github.io/(リポジトリ名) にアクセスするとサイトが起動
 
-https://github.com/xuejoule/tanaka_blog.git
-
-
+https://xuejoule.github.io/tanaka_blog/
