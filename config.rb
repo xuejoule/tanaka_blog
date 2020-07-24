@@ -59,7 +59,7 @@ end
 helpers do
   def host_url(link)
     'https://xuejoule.github.io/tanaka_blog' + link
-    'http://localhost:4567' + link
+#   'http://localhost:4567' + link
   end
 end
 
