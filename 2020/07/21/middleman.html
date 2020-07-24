@@ -11,12 +11,11 @@
     <script src="https://xuejoule.github.io/tanaka_blog/javascripts/site-954757c2.js"></script>
   </head>
   <body>
-    <ul>
-<li><p>modelのテスト</p></li>
-<li><p>正常系と異常系</p></li>
-</ul>
+    <h2>modelのテスト</h2>
 
-<p>パス: spec/models/contact_spec.rb</p>
+<h2>正常系と異常系</h2>
+
+<p>filepath: spec/models/contact_spec.rb</p>
 
 <pre><code>require &#39;rspec_helper&#39;
 
@@ -40,35 +39,35 @@ describe Contact do
 end
 </code></pre>
 
-<p>before、context使用する
-```
-require &#39;rspec_helper&#39;</p>
+<p>before、context使用する</p>
 
-<p>describe &#39;validation&#39; do
+<pre><code>require &#39;rspec_helper&#39;
+
+describe &#39;validation&#39; do
   before each do
     contact = Contact.new(
       firstname: nil,
       lastname: &quot;manabu&quot;,
-      email: &quot;<a href="mailto:tanaka@exmple.com">tanaka@exmple.com</a>&quot;
+      email: &quot;tanaka@exmple.com&quot;
     )
   end
   context &#39;firstname, lastname, emailがvalid&#39; do
-    it &#39;is<em>valid&#39; do
-      expect(contact).to be</em>valid
+    it &#39;is_valid&#39; do
+      expect(contact).to be_valid
     end
   end
   context &#39;firstnameがない場合&#39; do
     before each do
       contact.firstname = nil
     end
-    it &#39;is<em>invalid&#39; do
-      expect(contact).to have(1).error</em>on(:firstname)
+    it &#39;is_invalid&#39; do
+      expect(contact).to have(1).error_on(:firstname)
     end
   end
 end
-```</p>
+</code></pre>
 
-<p>dry(重複させない)</p>
+<p>DRY(重複させない)</p>
 
 <p>describeが親contextが子</p>
 
@@ -82,8 +81,8 @@ end
 
 <p>contact.firstname = nilがテストデータにセットされる</p>
 
-<p>contactはローカル変数なので、contextの中のcontactのメソッドが見つからないと
-エラーになるのでインスタンス変数に変更する必要がある</p>
+<p>contactはローカル変数。contextの中のcontactメソッドが見つからないと
+エラーになるのでインスタンス変数に変更</p>
 
 <p>修正後</p>
 
