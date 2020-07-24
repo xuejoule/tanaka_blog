@@ -2,11 +2,11 @@
 title: Rspec学習
 ---
 
-* modelのテスト
+## modelのテスト
 
-* 正常系と異常系
+## 正常系と異常系
 
-パス: spec/models/contact_spec.rb
+filepath: spec/models/contact_spec.rb
 
 
 ```
@@ -33,6 +33,7 @@ end
 ```
 
 before、context使用する
+
 ```
 require 'rspec_helper'
 
@@ -60,7 +61,7 @@ describe 'validation' do
 end
 ```
 
-dry(重複させない)
+DRY(重複させない)
 
 describeが親contextが子
 
@@ -74,8 +75,8 @@ beforeでまとめる
 
 contact.firstname = nilがテストデータにセットされる
 
-contactはローカル変数なので、contextの中のcontactのメソッドが見つからないと
-エラーになるのでインスタンス変数に変更する必要がある
+contactはローカル変数。contextの中のcontactメソッドが見つからないと
+エラーになるのでインスタンス変数に変更
 
 
 修正後
