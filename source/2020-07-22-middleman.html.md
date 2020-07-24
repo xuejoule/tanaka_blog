@@ -131,7 +131,7 @@ gem 'middleman-deploy', '~> 2.0.0.pre.alpha'
 ```
 helpers do
   def host_url(link)
-    'https://(ユーザー名).github.io' + link => 'https://xuejoule.github.io' + link
+    'https://(ユーザー名).github.io' + link => 'https://xuejoule.github/tanaka_blog.io' + link
     'http://localhost:4567' + link
   end
 end
