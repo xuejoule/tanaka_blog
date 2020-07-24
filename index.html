@@ -68,6 +68,24 @@ SESSION_MANAGER=local/jacquard:@/tmp/...</code></pre>
 Parsing...</code></pre>
   <a href="https://xuejoule.github.io/tanaka_blog/2020/07/22/middleman.html">もっと読む</a>
   <hr>
+  2020/07/21(火): <a href="https://xuejoule.github.io/tanaka_blog/2020/07/21/middleman.html">Rspec学習</a><br>
+  <ul>
+<li><p>modelのテスト</p></li>
+<li><p>正常系と異常系</p></li>
+</ul>
+
+<p>パス: spec/models/contact_spec.rb</p>
+
+<pre><code>require 'rspec_helper'
+
+describe Contact do
+  it 'firstname, lastname, emailがvalid' do
+    contact = Contact.new(
+      firstname: "tanaka",
+      lastname: "manabu",
+      email: "tanaka@exmple...</code></pre>
+  <a href="https://xuejoule.github.io/tanaka_blog/2020/07/21/middleman.html">もっと読む</a>
+  <hr>
 
   </body>
 </html>
