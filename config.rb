@@ -48,7 +48,7 @@ configure :build do
 end
 
 activate :blog do |blog|
-#  blog.prefix = "blog"
+# blog.prefix = "blog"
 # blog.permalink = "blog/{year}/{title}.html"
 # blog.permalink = "blog/{category}/{title}.html"
   blog.sources = "{year}-{month}-{day}-{title}.html"
@@ -59,7 +59,7 @@ end
 helpers do
   def host_url(link)
     'https://xuejoule.github.io/tanaka_blog' + link
-#   'http://localhost:4567' + link
+    'http://localhost:4567' + link
   end
 end
 
