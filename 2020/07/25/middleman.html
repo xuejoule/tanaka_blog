@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>正規表現</title>
+    <link href="https://xuejoule.github.io/tanaka_blog/stylesheets/site-3beba0c0.css" rel="stylesheet" />
+    <script src="https://xuejoule.github.io/tanaka_blog/javascripts/site-954757c2.js"></script>
+  </head>
+  <body>
+    <p>regrex = /\d{3}-\d{4}/
+regrex.class</p>
+
+<h1>=&gt; Regexp</h1>
+
+<p>マッチした場合は文字列の開始位置
+&#39;123-4567&#39; =~ /\d{3}-\d{4}/</p>
+
+<h1>=&gt; 0</h1>
+
+<p>マッチしない
+&#39;hello&#39; =~ /\d{3}-\d{4}/</p>
+
+<h1>=&gt; nil</h1>
+
+<p>マッチしたらfalse
+&#39;123-4567&#39; !~ /\d{3}-\d{4}/
+=&gt; false</p>
+
+<p>マッチしなければtrue
+&#39;hello&#39; !~ /\d{3}-\d{4}/</p>
+
+<h1>=&gt; true</h1>
+
+<p>分岐
+if &#39;123-4567&#39; =~ /\d{3}-\d{4}/
+puts &#39;マッチしました&#39;
+else
+puts &#39;マッチしませんでした&#39;
+end</p>
+
+<p>/^[0-9][0-9]*$/
+^行頭
+*0回以上の繰り返しにマッチ
+$行末
+1回以上の繰り返しにマッチ</p>
+
+<h2>scan</h2>
+
+<p>scanメソッドは、引数で指定した正規表現のパターンとマッチする部分を文字列からすべて取り出し、配列にして返します。マッチする部分がなければ、空の配
+引数に文字列を指定したときは、一致する部分文字列をすべて配列に取り出します。</p>
+
+<pre><code>str = &quot;Hello, holland, Cello, h35L320&quot;
+p str.class
+p str.scan(/^[hc].*o$/i)
+</code></pre>
+
+<pre><code>s = &quot;To be or not to be, that is the question.&quot;
+hash = Hash.new(0)
+s.scan(/\w+/) { |i| hash[i] += 1}
+p hash[&quot;be&quot;]
+</code></pre>
+
+<pre><code>puts &quot;0123456789-&quot;.delete(&quot;^13-56-&quot;)
+puts &quot;0123456789-&quot;.delete(&quot;13456-&quot;)
+</code></pre>
+
+<pre><code>p &quot;abc def 123 ghi 4567&quot;.scan(/\d+/).length
+# (/\d+/)は\d+は数字の繰り返し
+p &quot;abc def 123 ghi 456 1 33&quot;.scan(/\d+/)
+</code></pre>
+
+<h2>match</h2>
+
+<pre><code>text = &#39;わたしの誕生日は1977年7月17日です&#39;
+m = /(\d+)年(\d+)月(\d+)日/.match(text)
+m[1]#=&gt; &quot;1977&quot;
+m[2]#=&gt; &quot;7&quot;
+m[3]#=&gt; &quot;17&quot;
+</code></pre>
+
+<p>1つ以上の数字のみで構成される行にマッチする正規表現
+<code>
+p !!&quot;123&quot;.match(/^[0-9][0-9]*$/)
+p !!&quot;aa&quot;.match(/^[0-9][0-9]*$/)
+p !!&quot;aaaaa&quot;.match(/^[a-c][a-c]*$/)
+</code></p>
+
+<pre><code>p &quot;HogeHOGEhoge&quot;[/[A-Z][^A-Z]+/]
+p &quot;HogeHOGEhoge&quot;[/^[A-Z]+/]
+p &quot;HogeHOGEhoge&quot;[/^[a-z]*/]
+</code></pre>
+
+<p>!!=&gt;boolean(真偽値)を返す</p>
+
+<pre><code>p !!&quot;2&quot;.match(/^[0-9][0-9]*$/)
+#=&gt;true
+</code></pre>
+
+<pre><code>str = [&quot;Hello&quot;,  &quot;holland&quot;, &quot;Cello&quot;, &quot;h35L320&quot;]
+str.each do |s|
+p  s.match(/^[hc].*o$/i)
+end
+#=&gt;Hello, Cello
+</code></pre>
+
+<h2>gsub</h2>
+
+<p>subメソッドは、文字列の中で正規表現のパターンpatternに最初にマッチした部分を文字列replacementに置換し、新しい文字列を返します。
+gsubメソッドとgsub!メソッドは、文字列の中で正規表現のパターンにマッチした部分をすべて指定の文字列に置換する
+gsub!メソッドは、パターンにマッチした部分をすべて指定の文字列に置換します。レシーバ自身を変更するメソッドです。戻り値は、置換が行われたときはレシーバ自身、変更がなかったときはnil。</p>
+
+<pre><code>Hoge = &quot;hoge&quot;
+Hoge.gsub!(&quot;hoge&quot;, &quot;piyo&quot;)
+p Hoge
+</code></pre>
+
+<pre><code>names = &quot;tttaaapppoooqqqaaa&quot;
+names.gsub!(&quot;aaa&quot;, &quot;mmmmm&quot;)
+p names
+</code></pre>
+
+<pre><code>foo = &quot;I love apple, banana and grap&quot;
+5.times do
+foo = foo.sub(&quot;a&quot;, &quot;@&quot;)
+end
+p foo
+</code></pre>
+
+<pre><code>#foo1 = &quot;I love applle, banana and grap&quot;
+#foo2 = foo1.sub(&quot;a&quot;, &quot;#&quot;)
+#foo3 = foo2.sub(&quot;a&quot;, &quot;#&quot;)
+#foo4 = foo3.sub(&quot;a&quot;, &quot;#&quot;)
+#foo5 = foo4.sub(&quot;a&quot;, &quot;#&quot;)
+#foo6 = foo5.sub(&quot;a&quot;, &quot;#&quot;)
+#p foo6
+</code></pre>
+
+<pre><code>#foo = &quot;I love apple, banana and grap&quot;
+#foo = foo.sub(&quot;a&quot;, &quot;@&quot;)
+#foo = foo.sub(&quot;a&quot;, &quot;@&quot;)
+#foo = foo.sub(&quot;a&quot;, &quot;@&quot;)
+#foo = foo.sub(&quot;a&quot;, &quot;@&quot;)
+#foo = foo.sub(&quot;a&quot;, &quot;@&quot;)
+#p foo
+</code></pre>
+
+<pre><code>class Tanaka
+attr_accessor :atai
+
+def initialize(string)
+@atai = string
+end
+
+def sub(from_string, to_string)
+result = @atai.sub(from_string, to_string)
+
+    return &quot;foo&quot;
+end
+end
+
+name1 = Tanaka.new(&#39;a&#39;)
+name1 = name1.sub(&quot;a&quot;, &quot;b&quot;)
+p name1 #=&gt;&quot;foo&quot;
+
+</code></pre>
+
+<h2>split</h2>
+
+<p>str.split(pattern = $;, [limit])
+splitメソッドは、引数patternを区切り文字として文字列を分割し、配列を返します</p>
+
+<pre><code>s = &quot;a;b:c;d:e;f&quot;
+p s.split(/:|;/)
+#=&gt;[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;]
+</code></pre>
+
+<p>str = &quot;a, b, c, d&quot;
+p str.split(/,/, 2)</p>
+
+<pre><code>p &quot;100,200,300,400,500&quot;.split(&quot;,&quot;).join(&quot;\n&quot;)
+p arry=  &quot;100,200,300,400,500&quot;.split(&quot;,&quot;)
+p arry.join(&quot;\n&quot;)
+</code></pre>
+
+<h2>slice</h2>
+
+<pre><code>p &quot;hogePiyohogehoge&quot;.slice(/o../)
+</code></pre>
+
+<pre><code>p a.slice(0, 3)
+#=&gt;[1, 2, 3]
+</code></pre>
+
+<pre><code>string = &quot;test code&quot;
+string.slice(0, 4)
+p a
+# 破壊的メソッドではないので文字列の中身はかわらない
+</code></pre>
+
+<pre><code>arry = [&quot;dog&quot;, &quot;cat&quot;, &quot;monkey&quot;]
+p arry.slice(1, 3)
+p arry
+</code></pre>
+
+<pre><code>a = [&quot;Ruby&quot;, &quot;Tanaka&quot;, &quot;Rails&quot;]
+p a.slice(1, 4)
+</code></pre>
+
+<pre><code>s = &quot;hello&quot;
+p s.slice(1, 3)   # 2番目から3文字分
+</code></pre>
+
+<pre><code>s = &quot;hello, world&quot;
+puts s.slice(7..10)  # 7文字目から10文字目まで
+</code></pre>
+
+<pre><code>s = &quot;tanakamanabu&quot;
+a = s.slice(2..7)
+p a#=&gt;&quot;nakama&quot;
+</code></pre>
+
+  </body>
+</html>
