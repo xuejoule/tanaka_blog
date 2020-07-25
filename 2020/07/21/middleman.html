@@ -86,7 +86,9 @@ end
 
 <p>修正後</p>
 
-<pre><code>describe &#39;validation&#39; do
+<pre><code>require &#39;rspec_helper&#39;
+
+describe &#39;validation&#39; do
   before each do
     @contact = Contact.new(
       firstname: nil,
@@ -105,6 +107,35 @@ end
     end
     it &#39;is_invalid&#39; do
       expect(@contact).to have(1).error_on(:firstname)
+    end
+  end
+end
+</code></pre>
+
+<h2>letを使用する</h2>
+
+<pre><code>require &#39;rspec_helper&#39;
+
+describe &#39;validation&#39; do
+  before each do
+    let(:contact) { Contact.new
+      (
+        firstname: nil,
+        lastname: &quot;manabu&quot;,
+        email: &quot;tanaka@exmple.com&quot;
+      )}
+  end
+  context &#39;firstname, lastname, emailがvalid&#39; do
+    it &#39;is_valid&#39; do
+        expect(@contact).to be_valid
+    end
+  end
+  context &#39;firstnameがない場合&#39; do
+    before each do
+      contact.firstname = nil
+    end
+    it &#39;is_invalid&#39; do
+      expect(contact).to have(1).error_on(:firstname)
     end
   end
 end

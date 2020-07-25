@@ -11,7 +11,9 @@
     <script src="https://xuejoule.github.io/tanaka_blog/javascripts/site-954757c2.js"></script>
   </head>
   <body>
-    <pre><code>regrex = /\d{3}-\d{4}/
+    <h1>regular expression</h1>
+
+<pre><code>regrex = /\d{3}-\d{4}/
 regrex.class #=&gt; Regexp
 </code></pre>
 
@@ -38,17 +40,18 @@ regrex.class #=&gt; Regexp
 <h2>分岐</h2>
 
 <pre><code>if &#39;123-4567&#39; =~ /\d{3}-\d{4}/
-puts &#39;マッチしました&#39;
+  puts &#39;マッチしました&#39;
 else
-puts &#39;マッチしませんでした&#39;
+  puts &#39;マッチしませんでした&#39;
 end
 </code></pre>
 
-<p>/^[0-9][0-9]*$/
+<pre><code>/^[0-9][0-9]*$/
 ^行頭
 *0回以上の繰り返しにマッチ
 $行末
-1回以上の繰り返しにマッチ</p>
+1回以上の繰り返しにマッチ
+</code></pre>
 
 <h2>scan</h2>
 
@@ -84,12 +87,12 @@ m[2]#=&gt; &quot;7&quot;
 m[3]#=&gt; &quot;17&quot;
 </code></pre>
 
-<p>1つ以上の数字のみで構成される行にマッチする正規表現
-<code>
-p !!&quot;123&quot;.match(/^[0-9][0-9]*$/)
+<p>1つ以上の数字のみで構成される行にマッチする正規表現</p>
+
+<pre><code>p !!&quot;123&quot;.match(/^[0-9][0-9]*$/)
 p !!&quot;aa&quot;.match(/^[0-9][0-9]*$/)
 p !!&quot;aaaaa&quot;.match(/^[a-c][a-c]*$/)
-</code></p>
+</code></pre>
 
 <pre><code>p &quot;HogeHOGEhoge&quot;[/[A-Z][^A-Z]+/]
 p &quot;HogeHOGEhoge&quot;[/^[A-Z]+/]
