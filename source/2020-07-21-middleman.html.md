@@ -82,6 +82,8 @@ contactはローカル変数。contextの中のcontactメソッドが見つか�
 修正後
 
 ```
+require 'rspec_helper'
+
 describe 'validation' do
   before each do
     @contact = Contact.new(
@@ -105,3 +107,35 @@ describe 'validation' do
   end
 end
 ```
+
+## letを使用する
+
+```
+require 'rspec_helper'
+
+describe 'validation' do
+  before each do
+    let(:contact) { Contact.new
+      (
+        firstname: nil,
+        lastname: "manabu",
+        email: "tanaka@exmple.com"
+      )}
+  end
+  context 'firstname, lastname, emailがvalid' do
+    it 'is_valid' do
+        expect(@contact).to be_valid
+    end
+  end
+  context 'firstnameがない場合' do
+    before each do
+      contact.firstname = nil
+    end
+    it 'is_invalid' do
+      expect(contact).to have(1).error_on(:firstname)
+    end
+  end
+end
+```
+
+
