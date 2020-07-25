@@ -15,24 +15,29 @@
 <h1>tanaka_blog</h1>
 <hr>
   2020/07/25(土): <a href="https://xuejoule.github.io/tanaka_blog/2020/07/25/middleman.html">正規表現</a><br>
-  <p>regrex = /\d{3}-\d{4}/
-regrex.class #=&gt; Regexp</p>
+  <pre><code>regrex = /\d{3}-\d{4}/
+regrex.class #=&gt; Regexp
+</code></pre>
 
-<p>マッチした場合は文字列の開始位置
-'123-4567' =~ /\d{3}-\d{4}/ #=&gt; 0</p>
+<p>マッチした場合は文字列の開始位置</p>
 
-<p>マッチしない
-'hello' =~ /\d{3}-\d{4}/ #=&gt; nil</p>
+<pre><code>'123-4567' =~ /\d{3}-\d{4}/ #=&gt; 0
+</code></pre>
 
-<p>マッチしたらfalse
-'123-4567' !~ /\d{3}-\d{4}/ #=&gt; false</p>
+<p>マッチしない</p>
 
-<p>マッチしなければtrue
-'hello' !~ /\d{3}-\d{4}/ #=&gt; true</p>
+<pre><code>'hello' =~ /\d{3}-\d{4}/ #=&gt; nil
+</code></pre>
 
-<h2>分岐</h2>
+<p>マッチしたらfalse</p>
 
-<p>if ...</p>
+<pre><code>'123-4567' !~ /\d{3}-\d{4}/ #=&gt; false
+</code></pre>
+
+<p>マッチしなければtrue</p>
+
+<pre><code>'hello' !~ /\d{3}-\d{4}/ #=&gt; true
+</code></pre>
   <a href="https://xuejoule.github.io/tanaka_blog/2020/07/25/middleman.html">もっと読む</a>
   <hr>
   2020/07/24(金): <a href="https://xuejoule.github.io/tanaka_blog/2020/07/24/middleman.html">環境変数について</a><br>

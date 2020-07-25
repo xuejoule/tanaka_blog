@@ -11,28 +11,38 @@
     <script src="https://xuejoule.github.io/tanaka_blog/javascripts/site-954757c2.js"></script>
   </head>
   <body>
-    <p>regrex = /\d{3}-\d{4}/
-regrex.class #=&gt; Regexp</p>
+    <pre><code>regrex = /\d{3}-\d{4}/
+regrex.class #=&gt; Regexp
+</code></pre>
 
-<p>マッチした場合は文字列の開始位置
-&#39;123-4567&#39; =~ /\d{3}-\d{4}/ #=&gt; 0</p>
+<p>マッチした場合は文字列の開始位置</p>
 
-<p>マッチしない
-&#39;hello&#39; =~ /\d{3}-\d{4}/ #=&gt; nil</p>
+<pre><code>&#39;123-4567&#39; =~ /\d{3}-\d{4}/ #=&gt; 0
+</code></pre>
 
-<p>マッチしたらfalse
-&#39;123-4567&#39; !~ /\d{3}-\d{4}/ #=&gt; false</p>
+<p>マッチしない</p>
 
-<p>マッチしなければtrue
-&#39;hello&#39; !~ /\d{3}-\d{4}/ #=&gt; true</p>
+<pre><code>&#39;hello&#39; =~ /\d{3}-\d{4}/ #=&gt; nil
+</code></pre>
+
+<p>マッチしたらfalse</p>
+
+<pre><code>&#39;123-4567&#39; !~ /\d{3}-\d{4}/ #=&gt; false
+</code></pre>
+
+<p>マッチしなければtrue</p>
+
+<pre><code>&#39;hello&#39; !~ /\d{3}-\d{4}/ #=&gt; true
+</code></pre>
 
 <h2>分岐</h2>
 
-<p>if &#39;123-4567&#39; =~ /\d{3}-\d{4}/
+<pre><code>if &#39;123-4567&#39; =~ /\d{3}-\d{4}/
 puts &#39;マッチしました&#39;
 else
 puts &#39;マッチしませんでした&#39;
-end</p>
+end
+</code></pre>
 
 <p>/^[0-9][0-9]*$/
 ^行頭
@@ -170,8 +180,9 @@ p s.split(/:|;/)
 #=&gt;[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;]
 </code></pre>
 
-<p>str = &quot;a, b, c, d&quot;
-p str.split(/,/, 2)</p>
+<pre><code>str = &quot;a, b, c, d&quot;
+p str.split(/,/, 2)
+</code></pre>
 
 <pre><code>p &quot;100,200,300,400,500&quot;.split(&quot;,&quot;).join(&quot;\n&quot;)
 p arry=  &quot;100,200,300,400,500&quot;.split(&quot;,&quot;)
