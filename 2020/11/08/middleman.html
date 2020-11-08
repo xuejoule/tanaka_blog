@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Middleman</title>
+    <link href="https://xuejoule.github.io/tanaka_blog/stylesheets/site-3beba0c0.css" rel="stylesheet" />
+    <script src="https://xuejoule.github.io/tanaka_blog/javascripts/site-954757c2.js"></script>
+  </head>
+  <body>
+    <h1>色々なコマンド</h1>
+
+<h2>調査したいファイルの行数</h2>
+
+<pre><code>% find . -type f | grep -e \.erb -e \.rb | grep -v cache | grep -v coverage | wc -l
+</code></pre>
+
+<pre><code>$ wc -l `find app/ -name &#39;*.rb&#39;`
+24755 合計
+</code></pre>
+
+<pre><code>$ wc -l database.yml
+40 database.yml
+</code></pre>
+
+<h2>clipに貼り付けてからemacsにペースト</h2>
+
+<pre><code>% git grep &#39;\private &#39; app/controllers/ | xclip -sel clip
+</code></pre>
+
+<pre><code>% git grep &#39; def \|class &#39; app/controllers/ | xclip -sel clip
+</code></pre>
+
+<h1>@ emacsコマンド</h1>
+
+<pre><code>line数と文字数を調べる
+マークしてから
+alt +  =
+</code></pre>
+
+<pre><code>置換
+マークした箇所
+alt-x
+replace-string
+置換したい文字入力後、置換する文字を入力
+</code></pre>
+
+<pre><code>Ctrl - Spaceで範囲選択
+Meta - x, replace-regexp, Return,
+正規表現 Return, 置換文字列 Return,
+</code></pre>
+
+<pre><code>先頭に空白行を足す
+Ctrl - Space
+Ctrl - f (追加したい文字数分)
+Ctrl - x r o
+</code></pre>
+
+<h2>linuxマシンコア数</h2>
+
+<pre><code>cat /proc/cpuinfo | grep processor
+</code></pre>
+
+  </body>
+</html>

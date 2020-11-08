@@ -14,6 +14,27 @@
     <title>ブログタイトル</title>
 <h1>tanaka_blog</h1>
 <hr>
+  2020/11/08(日): <a href="https://xuejoule.github.io/tanaka_blog/2020/11/08/middleman.html"></a><br>
+  <h1>色々なコマンド</h1>
+
+<h2>調査したいファイルの行数</h2>
+
+<pre><code>% find . -type f | grep -e \.erb -e \.rb | grep -v cache | grep -v coverage | wc -l
+</code></pre>
+
+<pre><code>$ wc -l `find app/ -name '*.rb'`
+24755 合計
+</code></pre>
+
+<pre><code>$ wc -l database.yml
+40 database.yml
+</code></pre>
+
+<h2>clipに貼り付けてからemacsにペースト</h2>
+
+<pre><code>% git grep '\private ' app/controllers...</code></pre>
+  <a href="https://xuejoule.github.io/tanaka_blog/2020/11/08/middleman.html">もっと読む</a>
+  <hr>
   2020/07/25(土): <a href="https://xuejoule.github.io/tanaka_blog/2020/07/25/middleman.html">正規表現</a><br>
   <h1>regular expression</h1>
 
