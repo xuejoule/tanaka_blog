@@ -32,7 +32,7 @@ describe Contact do
 end
 ```
 
-before、context使用する
+# before、context使用する
 
 ```
 require 'rspec_helper'
@@ -88,7 +88,7 @@ describe 'validation' do
   before each do
     @contact = Contact.new(
       firstname: nil,
-      lastname: "manabu",
+         lastname: "manabu",
       email: "tanaka@exmple.com"
     )
   end
@@ -108,7 +108,7 @@ describe 'validation' do
 end
 ```
 
-## letを使用する
+# letを使用する
 
 ```
 require 'rspec_helper'
